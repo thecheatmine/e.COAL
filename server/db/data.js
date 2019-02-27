@@ -36,3 +36,8 @@ db.quizes.insert({
         points: 3
     }]
 })
+db.users.drop();
+db.users.insert({
+    username: 'toto',
+    password: '123'
+});

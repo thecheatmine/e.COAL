@@ -14,10 +14,11 @@ class NavBar extends Component {
       super(props)
       this.state = {
         toggle: false,
-        searching: false
+        searching: false,
+        connected: false
       }
     }
-
+    
     render() {
       return (
         <BrowserRouter>
@@ -56,24 +57,27 @@ class NavBar extends Component {
                       <span>Quiz list</span>
                   </Link>
 
+
+                  {/* Liens qui changent selon si on est connecté ou non */}
+
                   <Link
-                    to={'/login'}
+                    to={this.state.connected ? '/create' : '/login'}
                     onClick={() => this.setState({
                       toggle: false
                     })}
                     className={ this.state.toggle ? "link link-top top" : "link link-top" }>
-                      <img src="/img/lock.svg" />
-                      <span>Login</span>
+                      <img src={this.state.connected ? "/img/create.svg" : "/img/lock.svg"} />
+                      <span>{this.state.connected ? 'Create' : 'Login'}</span>
                   </Link>
 
                   <Link
-                    to={'/register'}
+                    to={this.state.connected ? '/logout' : '/register'}
                     onClick={() => this.setState({
                       toggle: false
                     })}
                     className={ this.state.toggle ? "link link-right right" : "link link-right" }>
-                      <img src="/img/create.svg" />
-                      <span>Register</span>
+                      <img src={ this.state.connected ? "/img/lock_open.svg" : "/img/create.svg" } />
+                      <span>{this.state.connected ? 'Logout' : 'Register'}</span>
                   </Link>
                   
                 <nav id="navigation-mobile">

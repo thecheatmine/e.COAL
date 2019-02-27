@@ -25,6 +25,9 @@ p, a {
   font-size: 16px;
   line-height: 24px; }
 
+a {
+  text-decoration: none; }
+
 p, h1, h2, h3, h4, h5, h6 {
   padding: 10px 16px; }
 
@@ -43,6 +46,7 @@ form label {
 
 .btn {
   background: #a95ff0;
+  display: inline-block;
   padding: 12.5px 20px;
   border: none;
   border-radius: 5px;
@@ -84,8 +88,7 @@ header {
   border: solid 2px #a95ff0;
   border-radius: 5px; }
   .quiz-wrapper img {
-    width: 100%;
-    height: auto; }
+    width: 100%; }
 
 #navigation-mobile-wrapper-wrapper {
   width: 100%;
