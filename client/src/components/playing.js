@@ -30,7 +30,7 @@ class Question extends Component {
         <form onSubmit={e => this.props.nextQuestion(e)}>
           {tt}
           {ti}
-          <button type='submit' >Validate</button>
+          <button type='submit' className="button yellow" >Validate</button>
         </form>
       </div>
     );

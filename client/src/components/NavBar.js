@@ -4,6 +4,7 @@ import Home from '../components/home';
 import Login from '../components/login';
 import Register from '../components/register';
 import List from '../components/list';
+import CreateQuiz from '../components/createQuiz';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import {Link} from 'react-router-dom';
@@ -17,7 +18,21 @@ class NavBar extends Component {
         searching: false,
         connected: false
       }
+
+      
+      this.activateLogin = this.activateLogin.bind(this)
     }
+
+    activateLogin(){
+      this.setState({
+        connected: true
+      });
+
+    }
+
+
+
+
     
     render() {
       return (
@@ -61,23 +76,33 @@ class NavBar extends Component {
                   {/* Liens qui changent selon si on est connecté ou non */}
 
                   <Link
-                    to={this.state.connected ? '/create' : '/login'}
+                    to={this.state.connected ? '/create' : '/register'}
                     onClick={() => this.setState({
                       toggle: false
                     })}
                     className={ this.state.toggle ? "link link-top top" : "link link-top" }>
-                      <img src={this.state.connected ? "/img/create.svg" : "/img/lock.svg"} />
-                      <span>{this.state.connected ? 'Create' : 'Login'}</span>
+                      <img src={this.state.connected ? "/img/create.svg" : "/img/create.svg"} />
+                      <span>{this.state.connected ? 'Create' : 'Register'}</span>
                   </Link>
 
                   <Link
-                    to={this.state.connected ? '/logout' : '/register'}
-                    onClick={() => this.setState({
-                      toggle: false
-                    })}
+                    to={'/login'}
+                    onClick={
+                      (e) => {
+                        if(this.state.connected) {
+                          e.preventDefault()
+                          this.setState({
+                            connected: false,
+                            toggle: false
+                          })
+                        }
+                        this.setState({
+                          toggle: false
+                        })
+                    }}
                     className={ this.state.toggle ? "link link-right right" : "link link-right" }>
-                      <img src={ this.state.connected ? "/img/lock_open.svg" : "/img/create.svg" } />
-                      <span>{this.state.connected ? 'Logout' : 'Register'}</span>
+                      <img src={ this.state.connected ? "/img/lock_open.svg" : "/img/lock.svg" } />
+                      <span>{this.state.connected ? 'Logout' : 'Login'}</span>
                   </Link>
                   
                 <nav id="navigation-mobile">
@@ -112,8 +137,11 @@ class NavBar extends Component {
               <Route exact={true} path="/" component={Home} />
               <Route exact={true} path="/quizzes" component={List} />
               <Route exact={true} path="/quizzes/:id" component={Play} />
-              <Route exact={true} path="/login" component={Login} />
+              <Route exact={true} path="/login"
+                render={(props) => <Login {...props} activateLogin={this.activateLogin} />} />
               <Route exact={true} path="/register" component={Register} />
+              <Route exact={true} path="/create"
+                render={(props) => <CreateQuiz {...props} connected={this.state.connected} />} />
               <Route path="*" component={() => <p>Page Not Found</p>} />
             </Switch>
           </>
