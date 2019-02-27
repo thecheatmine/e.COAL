@@ -1,17 +1,24 @@
 const express = require("express");
 
-const bodyParser = require("body-parser");
+
 const router = express.Router();
 
 const db = require('./db/mongoose.js');
 const Users = db.users;
+const Quizes = db.quizes;
+
+router.get("/quizes", (req, res) => {
+  Quizes.find({})
+    .exec((err, data) => {
+      if (err)
+        return res.status(500).send(err);
+      else
+        res.json(data);
+    })
+})
+
 
 router
-  .use(express.static('resources'))
-  .use(bodyParser.json()) // for parsing application/json
-  .use(bodyParser.urlencoded({
-    extended: true
-  })) // for parsing application/x-www-form-urlencoded
   .get("/users", (req, res) => {
     Users
       .find({})
