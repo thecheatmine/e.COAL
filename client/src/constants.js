@@ -1,4 +1,4 @@
-const SERVER = "localhost";
+const SERVER = "192.168.43.188";
 const PORT = 8081;
 const HTTP_SERVER_PORT = 'http://' + SERVER + ':' + PORT + "/";
 const PICTURES = "pictures";

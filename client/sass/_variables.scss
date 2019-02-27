@@ -2,6 +2,8 @@ $grey: #444;
 $light-grey: #ddd;
 $light: #fafafa;
 
+$yellow: #f8f84b;
+
 $orange: #fd9335;
 
 $red: #f85656;
@@ -10,3 +12,11 @@ $dark-red: #951e22;
 $blue: #94c9ee;
 
 $purple: #a95ff0;
+
+@mixin Montserrat {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+@mixin Roboto {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}

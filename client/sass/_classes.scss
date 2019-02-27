@@ -1,0 +1,22 @@
+.btn {
+  background: $purple;
+  padding: 12.5px 20px;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  color: $light;
+  font-size: 20px;
+  border-bottom: solid 4px rgba($color: #000, $alpha: 0.25);
+
+  &.orange {
+    background: $orange;
+  }
+
+  &.yellow {
+    background: $yellow;
+  }
+}
+
+.margin-auto {
+  margin: auto;
+}

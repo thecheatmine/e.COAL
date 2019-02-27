@@ -6,4 +6,61 @@
 }
 
 @import '_variables.scss';
+
+body {
+  background-color: $light;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include Montserrat;
+}
+
+h1 {
+  background-color: $red;
+  color: $light;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: $purple;
+}
+
+p, a {
+  @include Roboto;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  padding: 10px 16px;
+}
+
+form {
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    @include Roboto;
+    margin: 12.5px auto;
+    max-width: 250px;
+
+    input, select, button {
+      padding: 12.5px 20px;
+      border: solid 2px $orange;
+      border-radius: 5px;
+      font-size: 20px;
+      margin: 12.5px 0;
+    }
+  }
+}
+
+@import '_classes.scss';
+@import '_container.scss';
+
+@import 'home/header';
+
+@import 'quiz/list';
+
 @import 'navigation/navbar-mobile.scss';

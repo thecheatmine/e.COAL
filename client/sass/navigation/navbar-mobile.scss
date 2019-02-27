@@ -1,8 +1,112 @@
-#navigation-mobile-wrapper {
+#navigation-mobile-wrapper-wrapper {
+  width: 100%;
   position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000000;
+}
+
+#navigation-mobile-wrapper {
+  position: absolute;
   bottom: 0;
   width: 100%;
   z-index: 10000;
+  // background: rgba($color: #fff, $alpha: 0.8);
+
+  .link {
+    pointer-events: none;    
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 225ms ease-in;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 50;
+    border-radius: 100%;
+    border: none;
+    background: $light;
+    box-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0);
+    // text-transform: uppercase;
+
+    span {
+      opacity: 0;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Montserrat';
+      text-transform: uppercase;
+      // text-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.7);
+    }
+
+    a {
+      display: flex;
+      color: $grey;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: 225ms ease-out;
+      // text-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.15);
+    }
+
+    &.top, &.left, &.right {
+      pointer-events: all;
+    }
+
+    &.top span, &.left span, &.right span {
+      opacity: 1;
+      transition: 195ms ease-in;
+    }
+
+    &.link-top {
+      // position: relative;
+      background: $orange;
+
+      span {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        margin: auto;
+        transform: translateX(-50%);
+        text-align: center;
+        white-space: nowrap;
+        // color: $grey;
+      }
+    }
+
+    &.link-left {
+      // position: relative;
+      background: $yellow;
+      span {
+        position: absolute;
+        left: -40px;
+        top: -30px;
+        margin: auto;
+        text-align: right;
+        white-space: nowrap;
+        // color: $grey;
+        }
+    }
+
+    &.link-right {
+      background: $red;
+      // position: relative;
+      span {
+        position: absolute;
+        right: -40px;
+        top: -30px;
+        margin: auto;
+        white-space: nowrap;
+        // color: $grey;
+      }
+    }
+  }
 
   form {
     position: absolute;
@@ -14,14 +118,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
+    width: 100%;
+    max-width: 600px;
     margin: auto;
+    padding: 0 64px;
     opacity: 0;
     transition: 225ms ease-out;
+    pointer-events: none;
 
     .wrapper {
       position: relative;
       width: 100%;
+      pointer-events: all;
 
       button[type=submit] {
         position: absolute;
@@ -60,12 +168,12 @@
     background: $light;
     box-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0.35);
 
-    &:focus {
-      background: $light-grey;
+    &.on{
+      background: $purple;
     }
   }
 
-  & > button.left {
+  & > a.left {
     bottom: 135px;
     left: -135px;
     transition: 195ms ease-out;
@@ -73,14 +181,14 @@
     box-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0.25);
   }
 
-  & > button.top {
+  & > a.top {
     bottom: 180px;
     transition: 195ms ease-out 30ms;
     z-index: 50;
     box-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0.25);
   }
 
-  & > button.right {
+  & > a.right {
     bottom: 135px;
     left: 135px;
     transition: 195ms ease-out 60ms;
@@ -91,9 +199,8 @@
   & > button {
     transition: 225ms ease-in;
     position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
+    margin: 0 auto;
+    bottom: -5px;
     left: 0;
     right: 0;
     width: 50px;
@@ -113,7 +220,7 @@
       z-index: 150;
     }
 
-    & > button {
+    & > a, & > button {
       display: none;
     }
 
@@ -123,6 +230,11 @@
         opacity: 0;
         transition: 225ms ease-in-out;
       }
+
+      a {
+        display: flex;
+        align-items: center;
+}
     }
 
     #navigation-mobile {
@@ -138,7 +250,7 @@
     width: 100%;
     overflow: hidden;
     height: 60px;
-    filter: drop-shadow(0 -2px 6px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 -2px 2px rgba($grey, 0.15));
 
     .center {
       height: 110px;
@@ -157,6 +269,17 @@
       width: 100%;
       height: 60px;
       display: block;
+
+      a {
+        color: $light;
+        text-decoration: none;
+        text-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0.15);
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: rgba($color: #000000, $alpha: 0.15);
+        }
+      }
     }
 
     img {
@@ -169,6 +292,19 @@
       margin-right: -10px;
       display: flex;
       align-items: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 16px;
+        font-family: 'Montserrat';
+        font-weight: 600;
+      }
+
+      img {
+        padding: 0 16px 0 0;
+      }
     }
     
     .right {
@@ -186,3 +322,24 @@
   }
 }
 
+#bottom-gradiant {
+  position: fixed;
+  z-index: 0;
+  bottom: 0;
+  // opacity: 0;
+  transition: background-image 225ms ease-out;
+  width: 100%;
+  height: 60px;
+  // background: rgba($blue, 0.35);
+  background-image: linear-gradient(to top, rgba($blue,1), rgba($blue,0.35));
+  pointer-events: none;
+
+  &.on {
+    opacity: 1;
+    transition: background-image 195ms ease-in;
+    pointer-events: all;
+    height: 100vh;
+    background: rgba($blue, 0);
+    background-image: linear-gradient(to top, rgba(#000, 0.8), rgba(#000,0.8));
+  }
+}

@@ -1,0 +1,15 @@
+.quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  overflow: hidden;
+  padding: 10px 16px;
+  background: #fff;
+  border: solid 2px $purple;
+  border-radius: 5px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
