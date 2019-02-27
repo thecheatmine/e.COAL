@@ -1,6 +1,7 @@
 db.quizes.drop();
+
 db.quizes.insert({
-    name: 'IrelandQuiz',
+    name: 'Ireland Quiz',
     icon: 'quizz1/quizz1.jpg',
     keywords: ['ireland', 'europe'],
     questions: [{
@@ -35,4 +36,34 @@ db.quizes.insert({
         solutions: [3],
         points: 3
     }]
-})
+});
+
+db.quizes.insert({ 
+    name: 'France Quiz',
+    icon: 'quizz2/quizz2.jpg',
+    keywords: ['france', 'europe'],
+    questions: [{
+        question: 'In which city we can find a place called "Terrils"?',
+        video: null,
+        txtAnswers: ["Paris", "Eze", "Lens", "Arras"],
+        imgAnswers: [],
+        solutions: [2],
+        points: 3
+    },
+    {
+        question: 'Which stadium you can see in this video?',
+        video: "movie.mp4",
+        txtAnswers: ["Stade de France in Saint-Denis", "Parc des Princes in Paris", "Allianz Riviera in Nicea", "Stade Bollaert Delelis in Lens"],
+        imgAnswers: [],
+        solutions: [3],
+        points: 3
+    },
+    {
+        question: 'Which of these place you can see in Lens?',
+        video: null,
+        txtAnswers: [],
+        imgAnswers: ["quizz2/louvre.jpg", "quizz2/stadium.jpg", "quizz2/other.jpg", "quizz2/other2.jpg"],
+        solutions: [0, 1],
+        points: 3
+    }
+});
