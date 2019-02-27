@@ -12,11 +12,27 @@ db.quizes.insert({
         points: 3
     },
     {
-        question: 'In which city is Guinness beer factory?',
+        question: 'A savoury blood pudding with a blend of onions, pork fat, oatmeal and pigs blood is called:',
         video: null,
-        txtAnswers: ["Dublin", "Cork", "Dundalk", "Athlonem"],
+        txtAnswers: ["uster fry", "black pudding", "sandwich", "english breakfast"],
         imgAnswers: [],
-        solutions: [0],
+        solutions: [1],
+        points: 3
+    },
+    {
+        question: 'When Irish dance born?',
+        video: null,
+        txtAnswers: ["1888", "1893", "1889", "1906"],
+        imgAnswers: [],
+        solutions: [1],
+        points: 3
+    },
+    {
+        question: 'Where is Eyre Square?',
+        video: null,
+        txtAnswers: ["Donegal", "Carlingford", "Dublin", "Galway"],
+        imgAnswers: [],
+        solutions: [3],
         points: 3
     }]
 })
