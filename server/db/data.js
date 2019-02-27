@@ -52,7 +52,7 @@ db.quizes.insert({
     },
     {
         question: 'Which stadium you can see in this video?',
-        video: "movie.mp4",
+        video: "quizz2/movie.mp4",
         txtAnswers: ["Stade de France in Saint-Denis", "Parc des Princes in Paris", "Allianz Riviera in Nicea", "Stade Bollaert Delelis in Lens"],
         imgAnswers: [],
         solutions: [3],
@@ -65,5 +65,63 @@ db.quizes.insert({
         imgAnswers: ["quizz2/louvre.jpg", "quizz2/stadium.jpg", "quizz2/other.jpg", "quizz2/other2.jpg"],
         solutions: [0, 1],
         points: 3
-    }
+    }]
+});
+db.quizes.insert({ 
+    name: 'Poland Quiz',
+    icon: 'quizz3/quizz3.jpg',
+    keywords: ['poland', 'europe'],
+    questions: [{
+        question: '',
+        video: null,
+        txtAnswers: ["", "", "", ""],
+        imgAnswers: [],
+        solutions: [2],
+        points: 3
+    },
+    {
+        question: '',
+        video: null,
+        txtAnswers: ["", "", "", ""],
+        imgAnswers: [],
+        solutions: [3],
+        points: 3
+    },
+    {
+        question: '',
+        video: null,
+        txtAnswers: [],
+        imgAnswers: [],
+        solutions: [],
+        points: 3
+    }]
+});
+db.quizes.insert({ 
+    name: 'China Quiz',
+    icon: 'quizz4/quizz4.jpg',
+    keywords: ['china', 'asia'],
+    questions: [{
+        question: '',
+        video: null,
+        txtAnswers: ["", "", "", ""],
+        imgAnswers: [],
+        solutions: [2],
+        points: 3
+    },
+    {
+        question: '',
+        video: null,
+        txtAnswers: ["", "", "", ""],
+        imgAnswers: [],
+        solutions: [3],
+        points: 3
+    },
+    {
+        question: '',
+        video: null,
+        txtAnswers: [],
+        imgAnswers: [],
+        solutions: [],
+        points: 3
+    }]
 });
