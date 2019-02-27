@@ -8,15 +8,13 @@ const Users = db.users;
 const Quizes = db.quizes;
 
 router.get("/quizes", (req, res) => {
-  protect(req, res, () => {
   Quizes.find({})
     .exec((err, data) => {
       if (err)
         return res.status(500).send(err);
       else
         res.json(data);
-    });
-  })
+    })
 })
 
 
