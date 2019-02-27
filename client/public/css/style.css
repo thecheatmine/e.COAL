@@ -58,9 +58,24 @@ form label {
     background: #fd9335; }
   .btn.yellow {
     background: #f8f84b; }
+  .btn.ask {
+    margin: 0 auto; }
+  .btn.finish {
+    margin: 15px auto; }
+
+.play-div {
+  margin-bottom: 100px; }
 
 .margin-auto {
   margin: auto; }
+
+label.line {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center; }
+  label.line input[type=checkbox] {
+    padding: 16px;
+    margin: 10px 16px; }
 
 #container {
   width: 100%;
@@ -81,7 +96,7 @@ header {
 .quiz-wrapper {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: auto;
   overflow: hidden;
   padding: 10px 16px;
   background: #fff;
@@ -89,6 +104,21 @@ header {
   border-radius: 5px; }
   .quiz-wrapper img {
     width: 100%; }
+  .quiz-wrapper .border {
+    border: 3px solid #94c9ee;
+    margin: 50px 0;
+    padding: 10px; }
+    .quiz-wrapper .border a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: space-between;
+      color: black; }
+      .quiz-wrapper .border a img {
+        height: 150px; }
+
+.imgQ {
+  height: 150px; }
 
 #navigation-mobile-wrapper-wrapper {
   width: 100%;

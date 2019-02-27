@@ -4,10 +4,11 @@ import Home from '../components/home';
 import Login from '../components/login';
 import Register from '../components/register';
 import List from '../components/list';
+import Search from '../components/search';
 import CreateQuiz from '../components/createQuiz';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 class NavBar extends Component {
 
@@ -16,28 +17,34 @@ class NavBar extends Component {
       this.state = {
         toggle: false,
         searching: false,
-        connected: false
+        connected: false,
+        query: null
       }
 
       
       this.activateLogin = this.activateLogin.bind(this)
     }
 
-    activateLogin(){
+    activateLogin() {
       this.setState({
         connected: true
       });
 
     }
 
+    submitForm (e) {
+      e.preventDefault()
+      this.props.history.push('/search');
+    }
 
-
-
-    
     render() {
+      let query = this.state.query
+      if(this.state.query != null) this.setState({query: null})
       return (
         <BrowserRouter>
           <>
+          {query ? <Redirect to={'/search/'+"recherche"} /> : null}
+          {/* { this.state.query ? <Redirect to={'/search/'+"recherche"} /> : null} */}
             <div id="navigation-mobile-wrapper-wrapper">
               <div id="navigation-mobile-wrapper" className=
                 { this.state.searching ? "searching" : "" }>
@@ -53,7 +60,14 @@ class NavBar extends Component {
                 >
                   { this.state.toggle ? <img src='/img/menu-opened.svg' alt='Menu' /> : <img src='/img/menu-closed.svg' alt='Menu' /> }
                 </button>
-                <form>
+                <form onSubmit={
+                  // this.submitForm.bind(this)
+                  (e) => {
+                    e.preventDefault()
+                    this.setState({query: "recherche"})
+                    // return <Redirect to='/search' />;
+                  }
+                }>
                   <div className="wrapper">
                     <input type="text" className="searchBar"/>
                     <button type="submit">
@@ -135,6 +149,8 @@ class NavBar extends Component {
               onClick={ () => this.setState({ toggle: false, searching: false }) }></div>
             <Switch>
               <Route exact={true} path="/" component={Home} />
+              <Route exact={true} path="/search/:query"
+                render={(props) => <Search {...props} query={this.state.query} />} />
               <Route exact={true} path="/quizzes" component={List} />
               <Route exact={true} path="/quizzes/:id" component={Play} />
               <Route exact={true} path="/login"

@@ -37,10 +37,12 @@ class List extends Component {
 
           <div className="quiz-wrapper">
             {this.state.quizes.map((object, index) =>
+            <div className="border">
               <Link to={{pathname: "/quizzes/"+ object._id, state: {_id: object._id }}} >
                 <h3>{object.name}</h3>
                 <img src={HTTP_SERVER_PORT_PICTURES + object.icon} />
               </Link>
+            </div>
             )}
           </div>
 

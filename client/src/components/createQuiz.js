@@ -13,11 +13,40 @@ class createQuiz extends Component {
     super(props)
 
     this.state = {
-      quizName: null,
-      keywords: "",
-      nbQuestion: 2,
+      name: null,
+      quizz: {
+        name: null,
+        keywords: null
+      },
+      nbQuestion: 1,
       connected: this.props.connected
     }
+  }
+
+  createQuizz() {
+
+    let imgAnswers = []
+    let txtAnswers = []
+
+    let questions = []
+    for(let i = 0; i < this.state.nbQuestion; i++) {
+      questions.push({
+        question: document.getElementById('question_'+i).value,
+        video: null,
+        txtAnswers: txtAnswers ? txtAnswers : null,
+        imgAnswers: imgAnswers ? imgAnswers : null,
+        solutions: [1, 2],
+        points: 3
+      })
+    }
+
+    this.setState({
+      quizz: {
+        name: document.getElementById('name').value,
+        keywords: null,
+        questions: questions,
+      }
+    })
   }
 
   createQuestions = () => {
@@ -25,10 +54,28 @@ class createQuiz extends Component {
 
     for(let i = 0; i < this.state.nbQuestion; i++) {
       table.push(
-        <label>
-          Question { i+1 }
-          <input type="text" id={"question_"+i+1}></input>
-        </label>
+        <fieldset key={i}>
+          <label>
+            Question { i+1 }
+            <input type="text" id={"question_"+i}></input>
+          </label>
+          <label>
+            Answer A
+            <input type="text" id={"answer_"+i+"_a"}></input>
+          </label>
+          <label>
+            Answer B
+            <input type="text" id={"answer_"+i+"_b"}></input>
+          </label>
+          <label>
+            Answer C
+            <input type="text" id={"answer_"+i+"_c"}></input>
+          </label>
+          <label>
+            Answer D
+            <input type="text" id={"answer_"+i+"_d"}></input>
+          </label>
+        </fieldset>
       )
     }
 
@@ -36,15 +83,16 @@ class createQuiz extends Component {
   }
 
   render() {
+    console.log(this.state.quizz)
 
     if(this.state.connected == false) {
-      return <Redirect to='/' />;
+      return <Redirect to='/login' />;
     }
       
     return (
       <div id="container">
         <h1>Create your quiz</h1>
-        <form onSubmit={() => alert('submit')}>
+        <form onChange={() => this.createQuizz()} onSubmit={() => alert('submit')}>
           <fieldset>
             <label>
               Name
@@ -55,14 +103,12 @@ class createQuiz extends Component {
               Keywords
               <input type="text" id="keyword_1"></input>
             </label>
-          </fieldset>
-          <fieldset>
             <label>
-              Question(s)
-              <input type="number" value={ this.state.nbQuestion }></input>
+              Question(s) maximum 5
+              <input step="1" value={this.state.nbQuestion} type="number" min="0" max="5" id="nbQuestion" onChange={ () => this.setState({nbQuestion: document.getElementById('nbQuestion').value}) }></input>
             </label>
-            { this.createQuestions() }
           </fieldset>
+          { this.createQuestions() }
 
           <button className="btn margin-auto" onClick={() => this.insertUser()} type="button">Submit</button>
         </form>

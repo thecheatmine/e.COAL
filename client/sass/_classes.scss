@@ -16,8 +16,32 @@
   &.yellow {
     background: $yellow;
   }
+
+  &.ask {
+    margin: 0 auto;
+  }
+
+  &.finish{
+    margin: 15px auto;
+  }
+}
+
+.play-div{
+  margin-bottom: 100px;
 }
 
 .margin-auto {
   margin: auto;
 }
+
+label.line {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+
+  input[type=checkbox] {
+    padding: 16px;
+    margin: 10px 16px;
+  }
+}
+

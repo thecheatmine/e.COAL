@@ -1,7 +1,7 @@
 .quiz-wrapper {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height:auto;
   overflow: hidden;
   padding: 10px 16px;
   background: #fff;
@@ -11,4 +11,23 @@
   img {
     width: 100%;
   }
+  .border{
+    border: 3px solid $blue;
+    margin: 50px 0;
+    padding: 10px;
+    a{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: space-between;
+      color: black;
+      img{
+        height: 150px;
+      }
+    }
+  }
+}
+
+.imgQ{
+  height: 150px;
 }
