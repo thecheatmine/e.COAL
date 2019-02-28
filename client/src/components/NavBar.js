@@ -7,6 +7,7 @@ import List from '../components/list';
 import Search from '../components/search';
 import CreateQuiz from '../components/createQuiz';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 import {Link, Redirect} from 'react-router-dom';
 
@@ -23,6 +24,17 @@ class NavBar extends Component {
 
       
       this.activateLogin = this.activateLogin.bind(this)
+    }
+
+    componentWillMount() {
+      // console.log(cookies.get('connected'));
+      const cookies = new Cookies();  
+      cookies.get('connected')
+      let connected = cookies.get('connected');
+      /* jshint expr: true */
+      if(connected != null) {
+        this.activateLogin()
+      }
     }
 
     activateLogin() {
@@ -72,6 +84,8 @@ class NavBar extends Component {
                           connected: false,
                           toggle: false
                         })
+                        const cookies = new Cookies();  
+                        cookies.remove('connected')
                       }
                       this.setState({
                         toggle: false
@@ -145,6 +159,8 @@ class NavBar extends Component {
                             connected: false,
                             toggle: false
                           })
+                          const cookies = new Cookies();  
+                          cookies.remove('connected')
                         }
                         this.setState({
                           toggle: false
@@ -183,6 +199,7 @@ class NavBar extends Component {
             <div id="bottom-gradiant"
               className={ (this.state.toggle || this.state.searching) ? "on" : "" }
               onClick={ () => this.setState({ toggle: false, searching: false }) }></div>
+              
             <Switch>
               <Route exact={true} path="/" component={Home} />
               <Route exact={true} path="/search/:query"

@@ -23,30 +23,68 @@ class createQuiz extends Component {
     }
   }
 
+  insertQuiz() {
+
+ 
+  }
+
   createQuizz() {
 
     let imgAnswers = []
-    let txtAnswers = []
-
+    
+    let video = null 
     let questions = []
+
     for(let i = 0; i < this.state.nbQuestion; i++) {
+      let solutions = []
+      if( document.getElementById("answer_"+i+"_acheckbox").checked) {
+        solutions.push(0)
+      }
+      if( document.getElementById("answer_"+i+"_bcheckbox").checked) {
+        solutions.push(1)
+      }
+      if( document.getElementById("answer_"+i+"_ccheckbox").checked) {
+        solutions.push(2)
+      }
+      if( document.getElementById("answer_"+i+"_dcheckbox").checked) {
+        solutions.push(3)
+      }
+
+      let txtAnswers = []
+      txtAnswers.push( document.getElementById("answer_"+i+"_a").value )
+      txtAnswers.push( document.getElementById("answer_"+i+"_b").value )
+      txtAnswers.push( document.getElementById("answer_"+i+"_c").value )
+      txtAnswers.push( document.getElementById("answer_"+i+"_d").value )
+
       questions.push({
         question: document.getElementById('question_'+i).value,
-        video: null,
+        video: video ? video : null,
         txtAnswers: txtAnswers ? txtAnswers : null,
         imgAnswers: imgAnswers ? imgAnswers : null,
-        solutions: [1, 2],
+        solutions: solutions,
         points: 3
       })
     }
 
-    this.setState({
-      quizz: {
+    const quizz = {
         name: document.getElementById('name').value,
+        icon: null,
         keywords: null,
         questions: questions,
+        published: true,
+        ownerId: 1,
+        scores: []
       }
-    })
+
+      axios.post(HTTP_SERVER_PORT + 'newQuiz', quizz)
+      .then(res => {
+        if (res.status === 200)
+          // this.loadData();   
+          return null
+          // If everything is ok, reload data in order to upadate the component
+        else
+          console.log("Failed to add user");
+      }).catch(err => console.log("Error =>", err));
   }
 
   createQuestions = () => {
@@ -57,23 +95,37 @@ class createQuiz extends Component {
         <fieldset key={i}>
           <label>
             Question { i+1 }
-            <input type="text" id={"question_"+i}></input>
+            <input type="text" id={"question_"+i} required></input>
           </label>
           <label>
-            Answer A
-            <input type="text" id={"answer_"+i+"_a"}></input>
+
+            <label className="line">
+            Answer A is solution ?
+              <input type="checkbox" id={"answer_"+i+"_acheckbox"}></input>
+            </label>
+            <input type="text" id={"answer_"+i+"_a"} required></input>
+            
           </label>
           <label>
-            Answer B
-            <input type="text" id={"answer_"+i+"_b"}></input>
+            <label className="line">
+            Answer B is solution ?
+              <input type="checkbox" id={"answer_"+i+"_bcheckbox"}></input>
+            </label>
+            <input type="text" id={"answer_"+i+"_b"} required></input>
           </label>
           <label>
-            Answer C
-            <input type="text" id={"answer_"+i+"_c"}></input>
+            <label className="line">
+            Answer C is solution ?
+              <input type="checkbox" id={"answer_"+i+"_ccheckbox"}></input>
+            </label>
+            <input type="text" id={"answer_"+i+"_c"} required></input>
           </label>
           <label>
-            Answer D
-            <input type="text" id={"answer_"+i+"_d"}></input>
+            <label className="line">
+            Answer D is solution ?
+              <input type="checkbox" id={"answer_"+i+"_dcheckbox"}></input>
+            </label>
+            <input type="text" id={"answer_"+i+"_d"} required></input>
           </label>
         </fieldset>
       )
@@ -92,7 +144,7 @@ class createQuiz extends Component {
     return (
       <div id="container">
         <h1>Create your quiz</h1>
-        <form onChange={() => this.createQuizz()} onSubmit={() => alert('submit')}>
+        <form /* onChange={() => this.createQuizz()}  onSubmit={() => alert('submit')} */>
           <fieldset>
             <label>
               Name
@@ -101,16 +153,16 @@ class createQuiz extends Component {
 
             <label>
               Keywords
-              <input type="text" id="keyword_1"></input>
+              <input type="text" id="keyword_1" disabled></input>
             </label>
             <label>
               Question(s) maximum 5
-              <input step="1" value={this.state.nbQuestion} type="number" min="0" max="5" id="nbQuestion" onChange={ () => this.setState({nbQuestion: document.getElementById('nbQuestion').value}) }></input>
+              <input step="1" value={this.state.nbQuestion} type="number" min="1" max="5" required id="nbQuestion" onChange={ () => this.setState({nbQuestion: document.getElementById('nbQuestion').value}) }></input>
             </label>
           </fieldset>
           { this.createQuestions() }
 
-          <button className="btn margin-auto" onClick={() => this.insertUser()} type="button">Submit</button>
+          <button className="btn margin-auto" onClick={() => this.createQuizz()} type="button">Submit</button>
         </form>
       </div>
     );

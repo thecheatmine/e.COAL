@@ -37,7 +37,23 @@ router.post("/newUser", (req, res) => {
   q.save()                          // Save the object.
     .then(item => res.json(item))     // send the object in response
     .catch(err => res.status(400).send("unable to save to database"));
+})        
+
+router.post("/newQuiz", (req, res) => {
+  console.log(req)
+  const q = new Quizes({
+    // username: req.body.name,
+    // password: req.body.passwd
+    name: req.body.name,
+    icon: req.body.icon,
+    keywords: req.body.keywords,
+    questions: req.body.questions
+  });    // The json object is the body of the request
+  q.save()                          // Save the object.
+    .then(item => res.json(item))     // send the object in response
+    .catch(err => res.status(400).send("unable to save to database"));
 })         
+
 
 
 router

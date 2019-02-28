@@ -3,6 +3,7 @@ import axios from 'axios';
 import {HTTP_SERVER_PORT} from '../constants.js';
 // import {quizzes, users} from '../examples';
 import Navbar from './NavBar'
+import Cookies from 'universal-cookie';
 import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
@@ -44,6 +45,9 @@ class Login extends Component {
         // this.setState({
         //   connected: true
         // });
+        const cookies = new Cookies();
+        cookies.set('connected', 'not secured tho', { path: '/' });
+        
         this.state.activateLogin();
         this.setState({connected: true})
         return null
