@@ -4,14 +4,14 @@
   height:auto;
   overflow: hidden;
   padding: 10px 0;
-  background: #fff;
   // border: solid 2px $purple;
   border-radius: 5px;
-
+  
   img {
     width: 100%;
   }
   .border{
+    background: #fff;
     border: 3px solid $blue;
     margin: 10px 0;
     padding: 10px;

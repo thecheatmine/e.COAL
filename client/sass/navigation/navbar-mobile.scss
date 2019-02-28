@@ -4,6 +4,10 @@
   bottom: 0;
   left: 0;
   z-index: 1000000;
+
+  @media screen and (min-width:768px) {
+    display: none;
+  }
 }
 
 #navigation-mobile-wrapper {
@@ -333,6 +337,10 @@
   // background: rgba($blue, 0.35);
   background-image: linear-gradient(to top, rgba($blue,1), rgba($blue,0.35));
   pointer-events: none;
+
+  @media screen and (min-width:768px) {
+    display: none;
+  }
 
   &.on {
     opacity: 1;

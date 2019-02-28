@@ -45,6 +45,42 @@ class NavBar extends Component {
           <>
           {query ? <Redirect to={'/search/'+this.state.query} /> : null}
           {/* { this.state.query ? <Redirect to={'/search/'+"recherche"} /> : null} */}
+
+            <div id="navbar-desktop">
+              <ul>
+                <li>
+                  <Link to={"/"}>
+                    <img src="/img/favicon.png"></img>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/"}>Home</Link>
+                </li>
+                <li>
+                  <Link to={"/quizzes"}>List of quiz</Link>
+                </li>
+                <li>
+                  <Link to={this.state.connected ? '/create' : '/register'}>{this.state.connected ? 'Create a quiz' : 'Register'}</Link>
+                </li>
+                <li>
+                  <Link to={'/login'}
+                  onClick={
+                    (e) => {
+                      if(this.state.connected) {
+                        e.preventDefault()
+                        this.setState({
+                          connected: false,
+                          toggle: false
+                        })
+                      }
+                      this.setState({
+                        toggle: false
+                      })
+                  }}
+                  >{this.state.connected ? 'Logout' : 'Login'}</Link>
+                </li>
+              </ul>
+            </div>
             <div id="navigation-mobile-wrapper-wrapper">
               <div id="navigation-mobile-wrapper" className=
                 { this.state.searching ? "searching" : "" }>

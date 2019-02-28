@@ -84,11 +84,18 @@ label.line {
 
 #container {
   width: 100%;
-  max-width: 700px;
+  max-width: 768px;
   margin: auto;
   padding: 10px 16px;
   overflow: hidden;
   margin-bottom: 100px; }
+  @media screen and (min-width: 768px) {
+    #container {
+      margin-bottom: 10px;
+      margin-top: 100px; } }
+  #container video {
+    max-width: 100%;
+    min-width: 100%; }
 
 header {
   display: flex;
@@ -105,11 +112,11 @@ header {
   height: auto;
   overflow: hidden;
   padding: 10px 0;
-  background: #fff;
   border-radius: 5px; }
   .quiz-wrapper img {
     width: 100%; }
   .quiz-wrapper .border {
+    background: #fff;
     border: 3px solid #94c9ee;
     margin: 10px 0;
     padding: 10px; }
@@ -129,6 +136,9 @@ header {
   bottom: 0;
   left: 0;
   z-index: 1000000; }
+  @media screen and (min-width: 768px) {
+    #navigation-mobile-wrapper-wrapper {
+      display: none; } }
 
 #navigation-mobile-wrapper {
   position: absolute;
@@ -361,6 +371,9 @@ header {
   height: 60px;
   background-image: linear-gradient(to top, #94c9ee, rgba(148, 201, 238, 0.35));
   pointer-events: none; }
+  @media screen and (min-width: 768px) {
+    #bottom-gradiant {
+      display: none; } }
   #bottom-gradiant.on {
     opacity: 1;
     transition: background-image 195ms ease-in;
@@ -368,3 +381,34 @@ header {
     height: 100vh;
     background: rgba(148, 201, 238, 0);
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); }
+
+#navbar-desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: none;
+  background: #f85656;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }
+  @media screen and (min-width: 768px) {
+    #navbar-desktop {
+      display: flex; } }
+  #navbar-desktop ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    height: 80px;
+    width: 100%;
+    max-width: 768px;
+    margin: auto; }
+    #navbar-desktop ul img {
+      height: 50px; }
+    #navbar-desktop ul a {
+      color: white;
+      font-weight: 600;
+      font-size: 20px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }

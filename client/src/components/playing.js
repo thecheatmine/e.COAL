@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {quizzes, users} from '../examples';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {HTTP_SERVER_PORT} from '../constants.js';
+import {HTTP_SERVER_PORT, HTTP_SERVER_PORT_VIDEOS} from '../constants.js';
 import {HTTP_SERVER_PORT_PICTURES} from '../constants.js';
 
 class Question extends Component {
@@ -11,15 +11,16 @@ class Question extends Component {
     const tt = this.props.question.txtAnswers.map((txt, index) =>
 
       <label className="line" key={index}>
+        <input name={ "answer_"+index } type='checkbox'/>
         {txt}
-        <input type='checkbox' id={"reponse"+index}/>
+        {/* <label for={ "answer_"+index }>{txt}</label> */}
       </label>
     );
 
     const ti = this.props.question.imgAnswers.map((img, index) =>
       <label key={index}>
         <img className="imgQ" key={index} src={HTTP_SERVER_PORT_PICTURES + img} />
-        <input type='checkbox' id={"reponse"+index} />
+        <input type='checkbox'/>
       </label>
     )
 
@@ -27,6 +28,9 @@ class Question extends Component {
       
       <div>
         <h3>{this.props.question.question}</h3>
+        {this.props.question.video
+        ? <video type="video/mp4" controls="controls" src={HTTP_SERVER_PORT_VIDEOS + this.props.question.video}></video>
+        : null}
         <form onSubmit={e => this.props.nextQuestion(e)}>
           {tt}
           {ti}
@@ -55,8 +59,16 @@ class Finish extends Component {
         You can also choose another quiz to play.
         Finally we invited you to create your own Quiz !
       </p>
-      <Link to="/quizzes" className="btn orange finish">Choose another quiz</Link>
-      <Link to="/create" className="btn orange finish">Create a Quiz</Link>
+      <Link to="/quizzes">
+        <button className="btn orange finish">
+          Choose another quiz
+        </button>
+      </Link>
+      <Link to="/create">
+        <button className="btn orange finish">
+          Create your quiz
+        </button>
+        </Link>
       </>
     );
   }

@@ -3,9 +3,19 @@
   // flex-direction: column;
   width: 100%;
   // max-width: 100%;
-  max-width: 700px;
+  max-width: 768px;
   margin: auto;
   padding: 10px 16px;
   overflow: hidden;
   margin-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 10px;
+    margin-top: 100px;
+  }
+
+  video {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
