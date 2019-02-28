@@ -12,17 +12,16 @@ class Question extends Component {
 
       <label className="line" key={index}>
         {txt}
-        <input type='checkbox' id={"reponse"+index} />
+        <input type='checkbox' id={"reponse"+index}/>
       </label>
     );
 
     const ti = this.props.question.imgAnswers.map((img, index) =>
-    <label key={index}>
+      <label key={index}>
         <img className="imgQ" key={index} src={HTTP_SERVER_PORT_PICTURES + img} />
         <input type='checkbox' id={"reponse"+index} />
-        </label>
-  
-      )
+      </label>
+    )
 
     return (
       
@@ -97,8 +96,8 @@ class Play extends Component {
     const rep = [];
     const max = this.state.quizz.questions.length-1;
 
-    if( this.state.current < max){
-
+    if( this.state.current <= max){
+      console.log("Question"+this.state.current)
 
       //      
       for (let i = 0; i <= e.target.elements.length - 1; i++) {
@@ -106,6 +105,7 @@ class Play extends Component {
           rep.push(i);
         }
       }
+      console.log(rep)
     
       //Indique si l'on a répondu vrai ou faux
       const win = ( rep.join() == this.state.quizz.questions[this.state.current].solutions.join() )
@@ -119,10 +119,17 @@ class Play extends Component {
       }
 
       //On calcule l'index suivant et on l'update
-      const index = this.state.current+1;
-      this.setState({
-        current: index
-      });
+      if(this.state.current >= max) {
+        this.setState({
+          playing: false
+        });
+      }
+      else {
+        const index = this.state.current+1;
+        this.setState({
+          current: index
+        });
+      }
 
 
 
@@ -138,9 +145,9 @@ class Play extends Component {
   render() {
     return (
       this.state.quizz ?
-      <div className="play-div">
-        <h1>Playing</h1>
-        <h2>{this.state.quizz.name}</h2>
+      <div id="container" className="play-div">
+        <h1>{this.state.quizz.name}</h1>
+        {/* <h2>{this.state.quizz.name}</h2> */}
           {
             this.state.playing
             ? <Question question = {this.state.quizz.questions[this.state.current]} nextQuestion = {(e) => this.nextQuestion(e)} />

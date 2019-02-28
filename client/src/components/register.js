@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import {quizzes, users} from '../examples';
+import axios from 'axios';
+import {HTTP_SERVER_PORT} from '../constants.js';
+import {Redirect} from 'react-router-dom';
 
 class Register extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      connected: this.props.connected
+    }
+  }
   
   insertUser() {
 
@@ -31,12 +40,19 @@ class Register extends Component {
     if(doExist === false && isPwdValid === true && Input === true) {
       
       const userData = {
-        _uid: 1 ,
         name: enterName,
         passwd: enterPass
       }
 
       console.log(userData)
+      axios.post(HTTP_SERVER_PORT + 'newUser', userData)
+      .then(res => {
+        if (res.status === 200)
+          // this.loadData();   
+          this.setState({connected: true})    // If everything is ok, reload data in order to upadate the component
+        else
+          console.log("Failed to add user");
+      }).catch(err => console.log("Error =>", err));
     }
 
 
@@ -69,6 +85,9 @@ class Register extends Component {
   }
 
     render() {
+      if(this.state.connected == true) {
+        return <Redirect to='/login' />;
+      }
       return (
         <div id="container">
           <h1>Register</h1>

@@ -3,9 +3,9 @@
   flex-direction: column;
   height:auto;
   overflow: hidden;
-  padding: 10px 16px;
+  padding: 10px 0;
   background: #fff;
-  border: solid 2px $purple;
+  // border: solid 2px $purple;
   border-radius: 5px;
 
   img {
@@ -13,7 +13,7 @@
   }
   .border{
     border: 3px solid $blue;
-    margin: 50px 0;
+    margin: 10px 0;
     padding: 10px;
     a{
       display: flex;
@@ -22,7 +22,7 @@
       align-items: space-between;
       color: black;
       img{
-        height: 150px;
+        // height: 150px;
       }
     }
   }

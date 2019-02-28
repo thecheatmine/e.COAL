@@ -32,10 +32,10 @@ class NavBar extends Component {
 
     }
 
-    submitForm (e) {
-      e.preventDefault()
-      this.props.history.push('/search');
-    }
+    // submitForm (e) {
+    //   e.preventDefault()
+    //   this.props.history.push('/search');
+    // }
 
     render() {
       let query = this.state.query
@@ -43,7 +43,7 @@ class NavBar extends Component {
       return (
         <BrowserRouter>
           <>
-          {query ? <Redirect to={'/search/'+"recherche"} /> : null}
+          {query ? <Redirect to={'/search/'+this.state.query} /> : null}
           {/* { this.state.query ? <Redirect to={'/search/'+"recherche"} /> : null} */}
             <div id="navigation-mobile-wrapper-wrapper">
               <div id="navigation-mobile-wrapper" className=
@@ -64,12 +64,12 @@ class NavBar extends Component {
                   // this.submitForm.bind(this)
                   (e) => {
                     e.preventDefault()
-                    this.setState({query: "recherche"})
+                    this.setState({query: document.getElementById('search-query').value})
                     // return <Redirect to='/search' />;
                   }
                 }>
                   <div className="wrapper">
-                    <input type="text" className="searchBar"/>
+                    <input type="text" id="search-query" className="searchBar"/>
                     <button type="submit">
                       <img src="/img/search.svg" alt="Search" />
                     </button>
@@ -155,7 +155,8 @@ class NavBar extends Component {
               <Route exact={true} path="/quizzes/:id" component={Play} />
               <Route exact={true} path="/login"
                 render={(props) => <Login {...props} activateLogin={this.activateLogin} />} />
-              <Route exact={true} path="/register" component={Register} />
+              <Route exact={true} path="/register"
+                render={(props) => <Register {...props} connected={this.state.connected} />} /> />
               <Route exact={true} path="/create"
                 render={(props) => <CreateQuiz {...props} connected={this.state.connected} />} />
               <Route path="*" component={() => <p>Page Not Found</p>} />

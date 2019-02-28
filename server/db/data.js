@@ -1,3 +1,9 @@
+db.users.drop();
+db.users.insert({
+  username: 'Fred',
+  password: '123'
+});
+
 db.quizes.drop();
 
 db.quizes.insert({

@@ -31,6 +31,11 @@ a {
 p, h1, h2, h3, h4, h5, h6 {
   padding: 10px 16px; }
 
+form fieldset {
+  margin: 10px 0;
+  border-radius: 5px;
+  border: solid 2px #444; }
+
 form label {
   display: flex;
   flex-direction: column;
@@ -79,7 +84,8 @@ label.line {
 
 #container {
   width: 100%;
-  max-width: 100%;
+  max-width: 700px;
+  margin: auto;
   padding: 10px 16px;
   overflow: hidden;
   margin-bottom: 100px; }
@@ -98,15 +104,14 @@ header {
   flex-direction: column;
   height: auto;
   overflow: hidden;
-  padding: 10px 16px;
+  padding: 10px 0;
   background: #fff;
-  border: solid 2px #a95ff0;
   border-radius: 5px; }
   .quiz-wrapper img {
     width: 100%; }
   .quiz-wrapper .border {
     border: 3px solid #94c9ee;
-    margin: 50px 0;
+    margin: 10px 0;
     padding: 10px; }
     .quiz-wrapper .border a {
       display: flex;
@@ -114,8 +119,6 @@ header {
       justify-content: center;
       align-items: space-between;
       color: black; }
-      .quiz-wrapper .border a img {
-        height: 150px; }
 
 .imgQ {
   height: 150px; }
@@ -337,11 +340,8 @@ header {
         display: flex;
         align-items: center;
         height: 100%;
-        padding: 0 16px;
         font-family: 'Montserrat';
         font-weight: 600; }
-      #navigation-mobile-wrapper #navigation-mobile .left img {
-        padding: 0 16px 0 0; }
     #navigation-mobile-wrapper #navigation-mobile .right {
       margin-left: -10px;
       display: flex;

@@ -12,8 +12,8 @@ db.once('open', () => {
 
 // database collections
 const usersSchema = Schema({
-  email: String,
-  name: String,
+  // email: String,
+  username: String,
   password: String
 });
 
