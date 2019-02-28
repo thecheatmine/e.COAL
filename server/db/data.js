@@ -104,7 +104,7 @@ db.quizes.insert({
 });
 db.quizes.insert({ 
     name: 'China Quiz',
-    icon: null,
+    icon: quizz4/quizz4.jpg,
     keywords: ['china', 'asia'],
     questions: [{
         question: 'When you see this picture what you think the part from China?(People to celebrate  in the end of spring festival)',
