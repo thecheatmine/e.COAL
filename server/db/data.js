@@ -104,30 +104,30 @@ db.quizes.insert({
 });
 db.quizes.insert({ 
     name: 'China Quiz',
-    icon: null,
+    icon: quizz4/quizz4.jpg,
     keywords: ['china', 'asia'],
     questions: [{
         question: 'When you see this picture what you think the part from China?(People to celebrate  in the end of spring festival)',
         video: null,
         txtAnswers: ["Beijing(Capital city in China)", "Shanghai(Economic city in China)", "Hangzhou(Culture city in China)", "Chengdu(Panda’s hometown)"],
         imgAnswers: "quizz4/chenghuangmiao.jpg",
-        solutions: [2],
-        points: 3
+        solutions: [1],
+        points: 1
     },
     {
         question: 'How about this?(That shows the beautiful snow river in famous place)',
         video: null,
         txtAnswers: ["Beijing(Capital city in China)", "Shanghai(Economic city in China)", "Hangzhou(Culture city in China)", "Chengdu(Panda’s hometown)"],
         imgAnswers: "quizz4/xihu.JPG",
-        solutions: [3],
-        points: 3
+        solutions: [2],
+        points: 1
     },
     {
         question: ' what means for Chinese people eat this food?(This made from rice and sweet beans）',
         video: null,
         txtAnswers: ["In order to celebrate Spring festival.", "Just for normal life in breakfast.", "In order to commemorate some famous person.", "Get luckily means."],
         imgAnswers: "quizz4/zongzi.jpg",
-        solutions: [4],
-        points: 3
+        solutions: [3],
+        points: 1
     }]
 });
